@@ -116,20 +116,33 @@ namespace OOP3
             Console.WriteLine("=== Консоль разработчика ===");
             Console.WriteLine("Клавиша создания студента нажата...");
             string name = textBox1.Text;
-            DateTime birthday = dateTimePicker1.Value;
+            DateTime birthdate = dateTimePicker1.Value;
             string profession = textBox2.Text;
             string homeAdress = textBox4.Text;
             string avgMark = textBox3.Text;
             string university = textBox5.Text;
-            Console.WriteLine("Вызываю конструктор Student, передавая в него");
-            Console.WriteLine("Name = \"" + name + "\"");
-            Console.WriteLine("Birthday = \"" + birthday.ToString() + "\"");
-            Console.WriteLine("Profession = \"" + profession + "\"");
-            Console.WriteLine("HomeAdress = \"" + homeAdress + "\"");
-            Console.WriteLine("AvgMark = \"" + avgMark + "\"");
-            Console.WriteLine("University = \"" + university + "\"");
-            Student newStudent = new Student(name);
+            string gender = "none";
+            int course = Convert.ToInt32(numericUpDown1.Value);
+            int group = Convert.ToInt32(numericUpDown2.Value);
+            if (radioButton1.Checked == true)
+            {
+                gender = "Мужской";
+            }
+            else if (radioButton2.Checked == true)
+            {
+                gender = "Женский";
+            }
+
+            Student newStudent = new Student(name,birthdate,profession,homeAdress,avgMark,university,gender,course,group);
+
+            newStudent.NameValidationFailed += OnNameValidationFailed;
+            newStudent.GenderValidationFailed += OnGenderValidationFailed;
+            newStudent.FirstValidationAccepted += OnValidationAccepted;
+
+            // Запуск валидации
+            newStudent.Validate();
         }
+
         private void InitializeComboBox(ComboBox SelectedComboBox, List<string> Content)
         {
             ComboBox comboBox = SelectedComboBox;
@@ -171,8 +184,25 @@ namespace OOP3
             radioButton1.Checked = false;
             radioButton2.Checked = false;
             radioButton1.Checked = true;
-            numericUpDown1.Value = 0;
-            numericUpDown2.Value = 0;
+            numericUpDown1.Value = 1;
+            numericUpDown2.Value = 1;
+        }
+        private void OnNameValidationFailed(string message)
+        {
+            Console.WriteLine("Ошибка имени: " + message);
+            MessageBox.Show("Ошибка имени: " + message);
+        }
+
+        private void OnGenderValidationFailed(string message)
+        {
+            Console.WriteLine("Ошибка пола: " + message);
+            MessageBox.Show("Ошибка пола: " + message);
+        }
+
+        private void OnValidationAccepted(string message)
+        {
+            Console.WriteLine("Успешная валидация: " + message);
+            MessageBox.Show(message);
         }
     }
 }

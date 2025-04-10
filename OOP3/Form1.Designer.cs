@@ -151,7 +151,7 @@
             this.textBox5.Location = new System.Drawing.Point(292, 206);
             this.textBox5.MaxLength = 4;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(126, 22);
+            this.textBox5.Size = new System.Drawing.Size(126, 20);
             this.textBox5.TabIndex = 21;
             // 
             // label38
@@ -179,7 +179,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(3, 156);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(415, 22);
+            this.textBox4.Size = new System.Drawing.Size(415, 20);
             this.textBox4.TabIndex = 17;
             this.textBox4.Text = "Минск, ул. Свердлова, 4";
             // 
@@ -233,7 +233,7 @@
             this.textBox3.Location = new System.Drawing.Point(134, 206);
             this.textBox3.MaxLength = 4;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(152, 22);
+            this.textBox3.Size = new System.Drawing.Size(152, 20);
             this.textBox3.TabIndex = 12;
             // 
             // label7
@@ -254,9 +254,19 @@
             0,
             0,
             0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(51, 22);
+            this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
             this.numericUpDown2.TabIndex = 10;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label6
             // 
@@ -276,9 +286,19 @@
             0,
             0,
             0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
             this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -294,7 +314,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(4, 77);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(414, 22);
+            this.textBox2.Size = new System.Drawing.Size(414, 20);
             this.textBox2.TabIndex = 6;
             this.textBox2.Text = "Инжинер программист";
             // 
@@ -324,7 +344,7 @@
             this.dateTimePicker1.MaxDate = new System.DateTime(2025, 4, 8, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(204, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(204, 20);
             this.dateTimePicker1.TabIndex = 3;
             this.dateTimePicker1.Value = new System.DateTime(2025, 4, 8, 0, 0, 0, 0);
             // 
@@ -342,7 +362,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(4, 27);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 22);
+            this.textBox1.Size = new System.Drawing.Size(204, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Фамилия Имя Отчество";
             // 
