@@ -6,14 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace OOP3
 {
     public partial class Form1 : Form
     {
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr AllocConsole();
         public Form1()
         {
+            AllocConsole();
             InitializeComponent();
             StudentCreation.Visible = false;
             StudentSettingsNavigation.Visible = false;
@@ -48,7 +53,8 @@ namespace OOP3
                 StudentCreation.Visible = true;
                 List<string> Blank = new List<string>
                 {
-                    "Все"
+                    "Все",
+                    "ds"
                 };
                 InitializeComboBox(comboBox2, Blank);
             } 
@@ -70,7 +76,16 @@ namespace OOP3
         /*StudentSettingsNavigation*/
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if 
+            string text = comboBox2.Text;
+            if (text == "Все")
+            {
+                StudentDisplay.Visible = false;
+                StudentCreation.Enabled = true;
+            } else
+            {
+                StudentDisplay.Visible = true;
+                StudentCreation.Enabled = false;
+            }
         }
         /*CompanySettingsNavigation*/
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,10 +98,12 @@ namespace OOP3
         {
 
         }
-
+        /*StudentCreationSubmit*/
         private void button2_Click(object sender, EventArgs e)
         {
-
+            string name = textBox1.Text;
+            Student newStudent = new Student("Фы Фы Фы");
+            textBox6.Text = newStudent.name;
         }
         private void InitializeComboBox(ComboBox SelectedComboBox, List<string> Content)
         {
