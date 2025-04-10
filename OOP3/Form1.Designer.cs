@@ -30,6 +30,8 @@
         {
             this.StudentCreation = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.Panel();
             this.StudentDisplay = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -90,10 +93,6 @@
             this.CompanySettingsNavigation = new System.Windows.Forms.Panel();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label38 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.StudentCreation.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -146,6 +145,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(425, 274);
             this.panel2.TabIndex = 3;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(292, 206);
+            this.textBox5.MaxLength = 4;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(126, 22);
+            this.textBox5.TabIndex = 21;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label38.Location = new System.Drawing.Point(288, 181);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(129, 24);
+            this.label38.TabIndex = 20;
+            this.label38.Text = "Университет";
             // 
             // button2
             // 
@@ -448,6 +465,16 @@
             this.StudentDisplay.Name = "StudentDisplay";
             this.StudentDisplay.Size = new System.Drawing.Size(821, 331);
             this.StudentDisplay.TabIndex = 5;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(143, 289);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(189, 37);
+            this.button6.TabIndex = 20;
+            this.button6.Text = "Сменить работу";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -827,50 +854,11 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Выберите компанию";
             // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(143, 289);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(189, 37);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Сменить работу";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(288, 181);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(129, 24);
-            this.label38.TabIndex = 20;
-            this.label38.Text = "Университет";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(292, 206);
-            this.textBox5.MaxLength = 4;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(126, 22);
-            this.textBox5.TabIndex = 21;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(835, 393);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox6.Size = new System.Drawing.Size(431, 291);
-            this.textBox6.TabIndex = 4;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1278, 691);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.Settings);
             this.Controls.Add(this.Navigation);
             this.Controls.Add(this.StudentCreation);
@@ -898,7 +886,6 @@
             this.CompanySettingsNavigation.ResumeLayout(false);
             this.CompanySettingsNavigation.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -969,7 +956,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox6;
     }
 }
 

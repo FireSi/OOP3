@@ -9,7 +9,6 @@ C:\Users\Администратор\Desktop\OOP3\OOP3\obj\Debug\OOP3.csproj.Core
 C:\Users\Администратор\Desktop\OOP3\OOP3\obj\Debug\OOP3.exe
 C:\Users\Администратор\Desktop\OOP3\OOP3\obj\Debug\OOP3.pdb
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.csproj.AssemblyReference.cache
-C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.Form1.resources
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.Properties.Resources.resources
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.csproj.GenerateResource.cache
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.csproj.CoreCompileInputs.cache
@@ -20,3 +19,4 @@ C:\Users\Admin\Desktop\OOP3\OOP3\bin\Debug\System.ComponentModel.Annotations.dll
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.csproj.Up2Date
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.exe
 C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.pdb
+C:\Users\Admin\Desktop\OOP3\OOP3\obj\Debug\OOP3.Form1.resources

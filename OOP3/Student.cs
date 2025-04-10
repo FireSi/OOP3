@@ -48,5 +48,4 @@ namespace OOP3
             set { _name = value; }
         }
     }
-
 }

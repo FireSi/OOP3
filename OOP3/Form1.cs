@@ -9,17 +9,21 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.IO;
 
 namespace OOP3
 {
     public partial class Form1 : Form
     {
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr AllocConsole();
+        /*ApplicationVariables*/
+        private List<Student> _students = null;
+
+
         public Form1()
         {
-            AllocConsole();
             InitializeComponent();
+            Console.WriteLine("Форма №1 запущена");
             StudentCreation.Visible = false;
             StudentSettingsNavigation.Visible = false;
             CompanySettingsNavigation.Visible = false;
@@ -44,9 +48,12 @@ namespace OOP3
         /*SettingsNavigation*/
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Изменено состояние выборки настроек...");
             string text = comboBox1.Text;
             if (text == "Студенты")
             {
+                Console.WriteLine("Выбраны настройки студентов;");
                 CloseSettingsNavigation();
                 StudentDisplay.Visible = true;
                 StudentSettingsNavigation.Visible = true;
@@ -60,6 +67,7 @@ namespace OOP3
             } 
             else if (text == "Компании")
             {
+                Console.WriteLine("Выбраны настройки компаний;");
                 CloseSettingsNavigation();
                 CompanySettingsNavigation.Visible = true;
                 List<string> Blank = new List<string>
@@ -70,20 +78,29 @@ namespace OOP3
             }
             else
             {
+                Console.WriteLine("Выбраны настройки \""+text+"\";");
                 CloseSettingsNavigation();
             }
         }
         /*StudentSettingsNavigation*/
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("----------");
+            Console.WriteLine("Изменено состояние выборки студента...");
+            Console.WriteLine("Очищаю ввод в создании студента...");
+            ClearStudentInput();
             string text = comboBox2.Text;
             if (text == "Все")
             {
+                Console.WriteLine("Студент не выбран;");
                 StudentDisplay.Visible = false;
+                Console.WriteLine("Разрешаю ввод в создании студента;");
                 StudentCreation.Enabled = true;
             } else
             {
+                Console.WriteLine("Выбран студент \"" + text + "\";");
                 StudentDisplay.Visible = true;
+                Console.WriteLine("Запрещаю ввод в создании студента;");
                 StudentCreation.Enabled = false;
             }
         }
@@ -92,18 +109,26 @@ namespace OOP3
         {
 
         }
-
-        /*StudentCreation*/
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
         /*StudentCreationSubmit*/
         private void button2_Click(object sender, EventArgs e)
         {
+            Console.Clear();
+            Console.WriteLine("=== Консоль разработчика ===");
+            Console.WriteLine("Клавиша создания студента нажата...");
             string name = textBox1.Text;
-            Student newStudent = new Student("Фы Фы Фы");
-            textBox6.Text = newStudent.name;
+            DateTime birthday = dateTimePicker1.Value;
+            string profession = textBox2.Text;
+            string homeAdress = textBox4.Text;
+            string avgMark = textBox3.Text;
+            string university = textBox5.Text;
+            Console.WriteLine("Вызываю конструктор Student, передавая в него");
+            Console.WriteLine("Name = \"" + name + "\"");
+            Console.WriteLine("Birthday = \"" + birthday.ToString() + "\"");
+            Console.WriteLine("Profession = \"" + profession + "\"");
+            Console.WriteLine("HomeAdress = \"" + homeAdress + "\"");
+            Console.WriteLine("AvgMark = \"" + avgMark + "\"");
+            Console.WriteLine("University = \"" + university + "\"");
+            Student newStudent = new Student(name);
         }
         private void InitializeComboBox(ComboBox SelectedComboBox, List<string> Content)
         {
@@ -131,6 +156,10 @@ namespace OOP3
             StudentSettingsNavigation.Visible = false;
             CompanySettingsNavigation.Visible = false;
             StudentCreation.Visible = false;
+            ClearStudentInput();
+        }
+        private void ClearStudentInput()
+        {
             textBox1.Text = string.Empty;
             textBox2.Text = string.Empty;
             DateTime DateCorrect = DateTime.Today;
