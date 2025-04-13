@@ -59,7 +59,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.Panel();
             this.StudentDisplay = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -151,7 +150,7 @@
             this.textBox5.Location = new System.Drawing.Point(292, 206);
             this.textBox5.MaxLength = 4;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(126, 20);
+            this.textBox5.Size = new System.Drawing.Size(126, 22);
             this.textBox5.TabIndex = 21;
             // 
             // label38
@@ -179,7 +178,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(3, 156);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(415, 20);
+            this.textBox4.Size = new System.Drawing.Size(415, 22);
             this.textBox4.TabIndex = 17;
             this.textBox4.Text = "Минск, ул. Свердлова, 4";
             // 
@@ -233,7 +232,7 @@
             this.textBox3.Location = new System.Drawing.Point(134, 206);
             this.textBox3.MaxLength = 4;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(152, 20);
+            this.textBox3.Size = new System.Drawing.Size(152, 22);
             this.textBox3.TabIndex = 12;
             // 
             // label7
@@ -260,7 +259,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(51, 22);
             this.numericUpDown2.TabIndex = 10;
             this.numericUpDown2.Value = new decimal(new int[] {
             1,
@@ -292,7 +291,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(51, 22);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -314,7 +313,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(4, 77);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(414, 20);
+            this.textBox2.Size = new System.Drawing.Size(414, 22);
             this.textBox2.TabIndex = 6;
             this.textBox2.Text = "Инжинер программист";
             // 
@@ -344,7 +343,7 @@
             this.dateTimePicker1.MaxDate = new System.DateTime(2025, 4, 8, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(204, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(204, 22);
             this.dateTimePicker1.TabIndex = 3;
             this.dateTimePicker1.Value = new System.DateTime(2025, 4, 8, 0, 0, 0, 0);
             // 
@@ -362,7 +361,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(4, 27);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 20);
+            this.textBox1.Size = new System.Drawing.Size(204, 22);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Фамилия Имя Отчество";
             // 
@@ -460,7 +459,6 @@
             // StudentDisplay
             // 
             this.StudentDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StudentDisplay.Controls.Add(this.button6);
             this.StudentDisplay.Controls.Add(this.panel1);
             this.StudentDisplay.Controls.Add(this.button5);
             this.StudentDisplay.Controls.Add(this.label30);
@@ -485,16 +483,6 @@
             this.StudentDisplay.Name = "StudentDisplay";
             this.StudentDisplay.Size = new System.Drawing.Size(821, 331);
             this.StudentDisplay.TabIndex = 5;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(143, 289);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(189, 37);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Сменить работу";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -595,12 +583,13 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(143, 246);
+            this.button5.Location = new System.Drawing.Point(143, 289);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(189, 37);
             this.button5.TabIndex = 18;
             this.button5.Text = "Удалить аккаунт";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label30
             // 
@@ -973,7 +962,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label38;
     }

@@ -11,13 +11,14 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
+using System.Globalization;
 
 namespace OOP3
 {
     public partial class Form1 : Form
     {
         /*ApplicationVariables*/
-        private List<Student> _students = null;
+        private List<Student> _students = new List<Student>();
 
 
         public Form1()
@@ -60,8 +61,7 @@ namespace OOP3
                 StudentCreation.Visible = true;
                 List<string> Blank = new List<string>
                 {
-                    "Все",
-                    "ds"
+                    "Все"
                 };
                 InitializeComboBox(comboBox2, Blank);
             } 
@@ -102,6 +102,15 @@ namespace OOP3
                 StudentDisplay.Visible = true;
                 Console.WriteLine("Запрещаю ввод в создании студента;");
                 StudentCreation.Enabled = false;
+                Student TempStudent = null;
+                foreach (Student student in _students)
+                {
+                    if (student.Name == text)
+                    {
+                        TempStudent = student;
+                    }
+                }
+                ShowStudentInfo(TempStudent);
             }
         }
         /*CompanySettingsNavigation*/
@@ -135,12 +144,17 @@ namespace OOP3
 
             Student newStudent = new Student(name,birthdate,profession,homeAdress,avgMark,university,gender,course,group);
 
+
             newStudent.NameValidationFailed += OnNameValidationFailed;
-            newStudent.GenderValidationFailed += OnGenderValidationFailed;
+            newStudent.ProffesionValidationFailed += OnProffesionValidationFailed;
+            newStudent.HomeAddressValidationFailed += OnHomeAddressValidationFailed;
+            newStudent.AvgMarkValidationFailed += OnAvgMarkValidationFailed;
+            newStudent.UniversityValidationFailed += OnUniversityValidationFailed;
             newStudent.FirstValidationAccepted += OnValidationAccepted;
 
-            // Запуск валидации
             newStudent.Validate();
+
+
         }
 
         private void InitializeComboBox(ComboBox SelectedComboBox, List<string> Content)
@@ -173,6 +187,11 @@ namespace OOP3
         }
         private void ClearStudentInput()
         {
+            textBox1.BackColor = Color.White;
+            textBox2.BackColor = Color.White;
+            textBox3.BackColor = Color.White;
+            textBox4.BackColor = Color.White;
+            textBox5.BackColor = Color.White;
             textBox1.Text = string.Empty;
             textBox2.Text = string.Empty;
             DateTime DateCorrect = DateTime.Today;
@@ -181,6 +200,7 @@ namespace OOP3
             dateTimePicker1.MinDate = DateTime.Parse("01.01.1980");
             textBox3.Text = string.Empty;
             textBox4.Text = string.Empty;
+            textBox5.Text = string.Empty;
             radioButton1.Checked = false;
             radioButton2.Checked = false;
             radioButton1.Checked = true;
@@ -191,18 +211,109 @@ namespace OOP3
         {
             Console.WriteLine("Ошибка имени: " + message);
             MessageBox.Show("Ошибка имени: " + message);
+            textBox1.BackColor = Color.Firebrick;
         }
-
-        private void OnGenderValidationFailed(string message)
+        private void OnProffesionValidationFailed(string message)
         {
-            Console.WriteLine("Ошибка пола: " + message);
-            MessageBox.Show("Ошибка пола: " + message);
+            Console.WriteLine("Ошибка профессии: " + message);
+            MessageBox.Show("Ошибка профессии: " + message);
+            textBox2.BackColor = Color.Firebrick;
+        }
+        private void OnHomeAddressValidationFailed(string message)
+        {
+            Console.WriteLine("Ошибка адреса: " + message);
+            MessageBox.Show("Ошибка адреса: " + message);
+            textBox4.BackColor = Color.Firebrick;
+        }
+        private void OnAvgMarkValidationFailed(string message)
+        {
+            Console.WriteLine("Ошибка средней оценки: " + message);
+            MessageBox.Show("Ошибка средней оценки: " + message);
+            textBox3.BackColor = Color.Firebrick;
+        }
+        private void OnUniversityValidationFailed(string message)
+        {
+            Console.WriteLine("Ошибка университета: " + message);
+            MessageBox.Show("Ошибка университета: " + message);
+            textBox5.BackColor = Color.Firebrick;
         }
 
         private void OnValidationAccepted(string message)
         {
             Console.WriteLine("Успешная валидация: " + message);
             MessageBox.Show(message);
+            Console.Clear();
+            Console.WriteLine("=== Консоль разработчика ===");
+            Console.WriteLine("Клавиша создания студента нажата...");
+            string name = textBox1.Text;
+            DateTime birthdate = dateTimePicker1.Value;
+            string profession = textBox2.Text;
+            string homeAdress = textBox4.Text;
+            string avgMark = textBox3.Text;
+            string university = textBox5.Text;
+            string gender = "none";
+            int course = Convert.ToInt32(numericUpDown1.Value);
+            int group = Convert.ToInt32(numericUpDown2.Value);
+            if (radioButton1.Checked == true)
+            {
+                gender = "Мужской";
+            }
+            else if (radioButton2.Checked == true)
+            {
+                gender = "Женский";
+            }
+
+            Student newStudent = new Student(name, birthdate, profession, homeAdress, avgMark, university, gender, course, group);
+
+            ClearStudentInput();
+            List<string> Blank = new List<string>
+            {
+                "Все"
+            };
+            foreach (Student student in _students)
+            {
+                Blank.Add(student.Name);
+            }
+            Blank.Add(newStudent.Name);
+            _students.Add(newStudent);
+            InitializeComboBox(comboBox2, Blank);
+            comboBox2.Text = newStudent.Name;
         }
+        private void ShowStudentInfo(Student student)
+        {
+            label14.Text = student.Name;
+            label16.Text = student.Birthdate.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
+            label18.Text = student.Profession;
+            label20.Text = student.HomeAddress;
+            label26.Text = student.University;
+            label30.Text = student.GetGender();
+            label29.Text = student.Course.ToString();
+            label28.Text = student.Group.ToString();
+            label27.Text = student.AvgMark;
+        }
+        /*StudentDelete*/
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string text = comboBox2.Text;
+            Student TempStudent = null;
+            foreach(Student student in _students)
+            {
+                if (text == student.Name)
+                {
+                    TempStudent = student;
+                }
+            }
+            _students.Remove(TempStudent);
+            List<string> Blank = new List<string>
+            {
+                "Все"
+            };
+            foreach (Student student in _students)
+            {
+                Blank.Add(student.Name);
+            }
+            InitializeComboBox(comboBox2, Blank);
+            comboBox2.Text = "Все";
+        }        
     }
 }

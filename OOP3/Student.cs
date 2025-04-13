@@ -15,6 +15,14 @@ namespace OOP3
         
         */
         private string _name;
+        private string _profession;
+        private string _homeAddress;
+        private string _avgMark;
+        private string _gender;
+        private string _university;
+        private DateTime _birthdate;
+        private int _course;
+        private int _group;
         /*
          
         СВОЙСТВА
@@ -29,14 +37,69 @@ namespace OOP3
             get { return _name; }
             set { _name = value; }
         }
-        public string Gender { get; set; }
+        [Required(ErrorMessage = "Поле профессии обязательно для заполнения")]
+        [RegularExpression(
+            @"^[А-ЯЁа-яё]+([ -][А-ЯЁа-яё]+)*$",
+            ErrorMessage = "Поле профессии должно содержать только русские буквы")]
+        public string Profession
+        {
+            get { return _profession; }
+            set { _profession = value; }
+        }
+        [Required(ErrorMessage = "Поле адреса обязательно для заполнения")]
+        [RegularExpression(
+            @"^[А-ЯЁ][а-яё]+,\sул\.\s[А-ЯЁ][а-яё]+,\s\d+(-\d+)?(,\s\d+)?$",
+            ErrorMessage = "Неверный формат адреса. Примеры: \"Минск, ул. Рощи, 10\", \"Минск, ул. Рощи, 10-2, 34\"")]
+        public string HomeAddress
+        {
+            get { return _homeAddress; }
+            set { _homeAddress = value; }
+        }
+        [Required(ErrorMessage = "Поле средней оценки обязательно для заполнения")]
+        [RegularExpression(
+             @"^(10|[0-9](?:[.,][0-9]{1,2})?)$",
+             ErrorMessage = "Допустимо значение от 0 до 10, до двух знаков после запятой или точки")]
+        [StringLength(4, ErrorMessage = "Максимальная длина — 4 символа")]
+        public string AvgMark
+        {
+            get { return _avgMark; }
+            set { _avgMark = value; }
+        }
+        [Required(ErrorMessage = "Поле университета обязательно для заполнения")]
+        [RegularExpression(
+            @"^[А-ЯЁ]{3,4}$",
+            ErrorMessage = "Поле должно содержать 3–4 заглавные русские буквы")]
+        public string University
+        {
+            get { return _university; }
+            set { _university = value; }
+        }
+        public DateTime Birthdate
+        {
+            get { return _birthdate; }
+            set { _birthdate = value; }
+        }
+        public int Course
+        {
+            get { return _course; }
+            set { _course = value; }
+        }
+        public int Group
+        {
+            get { return _group; }
+            set { _group = value; }
+        }
+
         /*
          
         СОБЫТИЯ
         
         */
         public event Action<string> NameValidationFailed;
-        public event Action<string> GenderValidationFailed;
+        public event Action<string> ProffesionValidationFailed;
+        public event Action<string> HomeAddressValidationFailed;
+        public event Action<string> AvgMarkValidationFailed;
+        public event Action<string> UniversityValidationFailed;
         public event Action<string> FirstValidationAccepted;
         /*
         
@@ -64,7 +127,14 @@ namespace OOP3
             Передача свойствам значений
             */
             this.Name = name;
-            this.Gender = gender;
+            this.Profession = profession;
+            this.HomeAddress = homeAdress;
+            this._gender = gender;
+            this.AvgMark = avgMark;
+            this.University = university;
+            this.Birthdate = birthdate;
+            this.Course = course;
+            this.Group = group;
         }
         /*
          
@@ -83,14 +153,37 @@ namespace OOP3
                 {
                     if (validationResult.MemberNames.Contains(nameof(Name)))
                         NameValidationFailed?.Invoke(validationResult.ErrorMessage);
-
-                    if (validationResult.MemberNames.Contains(nameof(Gender)))
-                        GenderValidationFailed?.Invoke(validationResult.ErrorMessage);
+                    if (validationResult.MemberNames.Contains(nameof(Profession)))
+                        ProffesionValidationFailed?.Invoke(validationResult.ErrorMessage);
+                    if (validationResult.MemberNames.Contains(nameof(HomeAddress)))
+                        HomeAddressValidationFailed?.Invoke(validationResult.ErrorMessage);
+                    if (validationResult.MemberNames.Contains(nameof(AvgMark)))
+                        AvgMarkValidationFailed?.Invoke(validationResult.ErrorMessage);
+                    if (validationResult.MemberNames.Contains(nameof(University)))
+                        UniversityValidationFailed?.Invoke(validationResult.ErrorMessage);
                 }
             }
             else
             {
                 FirstValidationAccepted?.Invoke("Все данные корректны. Запускаю протокол внедрения студента в базу...");
+            }
+        }
+        /*
+         
+        Получение гендера
+         
+        */
+        public string GetGender()
+        {
+            if (this._gender == "Мужской")
+            {
+                return "Муж.";
+            } else if (this._gender == "Женский")
+            {
+                return "Жен.";
+            } else
+            {
+                return "";
             }
         }
     }
