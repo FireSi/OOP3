@@ -109,6 +109,9 @@ namespace OOP3
         public Student(string name, DateTime birthdate, string profession, string homeAdress, string avgMark, string university, string gender, int course, int group)
         {
             /*
+            Присваиваю работу безработным 
+            */
+            /*
             Пробежка по всем значениям в DEBUG консоли. 
             */
             Console.WriteLine("Вызываю конструктор Student, передавая в него");
