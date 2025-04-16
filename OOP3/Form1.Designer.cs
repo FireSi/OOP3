@@ -58,6 +58,17 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.Panel();
+            this.CompanyDisplay = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
             this.StudentDisplay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
@@ -97,7 +108,6 @@
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -107,6 +117,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
+            this.PositionCreation = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.StudentCreation.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -114,6 +134,8 @@
             this.Navigation.SuspendLayout();
             this.SettingsNavigation.SuspendLayout();
             this.Settings.SuspendLayout();
+            this.CompanyDisplay.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.StudentDisplay.SuspendLayout();
             this.panel1.SuspendLayout();
             this.CompanySettingsNavigation.SuspendLayout();
@@ -122,6 +144,8 @@
             this.panel4.SuspendLayout();
             this.CompanyCreation.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.PositionCreation.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // StudentCreation
@@ -466,6 +490,7 @@
             // 
             this.Settings.BackColor = System.Drawing.Color.White;
             this.Settings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Settings.Controls.Add(this.CompanyDisplay);
             this.Settings.Controls.Add(this.StudentDisplay);
             this.Settings.Controls.Add(this.CompanySettingsNavigation);
             this.Settings.Controls.Add(this.StudentSettingsNavigation);
@@ -474,6 +499,137 @@
             this.Settings.Name = "Settings";
             this.Settings.Size = new System.Drawing.Size(829, 617);
             this.Settings.TabIndex = 3;
+            // 
+            // CompanyDisplay
+            // 
+            this.CompanyDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CompanyDisplay.Controls.Add(this.comboBox6);
+            this.CompanyDisplay.Controls.Add(this.panel7);
+            this.CompanyDisplay.Controls.Add(this.button8);
+            this.CompanyDisplay.Controls.Add(this.label69);
+            this.CompanyDisplay.Controls.Add(this.label70);
+            this.CompanyDisplay.Controls.Add(this.label71);
+            this.CompanyDisplay.Location = new System.Drawing.Point(3, 84);
+            this.CompanyDisplay.Name = "CompanyDisplay";
+            this.CompanyDisplay.Size = new System.Drawing.Size(821, 251);
+            this.CompanyDisplay.TabIndex = 20;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.label46);
+            this.panel7.Controls.Add(this.label49);
+            this.panel7.Controls.Add(this.label51);
+            this.panel7.Controls.Add(this.label52);
+            this.panel7.Controls.Add(this.label53);
+            this.panel7.Location = new System.Drawing.Point(336, 77);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(478, 165);
+            this.panel7.TabIndex = 19;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label46.Location = new System.Drawing.Point(122, 34);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(228, 28);
+            this.label46.TabIndex = 23;
+            this.label46.Text = "Лаба_Запарыватель";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label49.Location = new System.Drawing.Point(122, 65);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(74, 28);
+            this.label49.TabIndex = 20;
+            this.label49.Text = "99999";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label51.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label51.Location = new System.Drawing.Point(3, 65);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(111, 28);
+            this.label51.TabIndex = 21;
+            this.label51.Text = "Зарплата";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label52.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label52.Location = new System.Drawing.Point(3, 34);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(113, 28);
+            this.label52.TabIndex = 20;
+            this.label52.Text = "Название";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.BackColor = System.Drawing.Color.White;
+            this.label53.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label53.Location = new System.Drawing.Point(3, 3);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(285, 28);
+            this.label53.TabIndex = 2;
+            this.label53.Text = "Информация о должности";
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(141, 206);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(189, 37);
+            this.button8.TabIndex = 18;
+            this.button8.Text = "Удалить компанию";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label69.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label69.Location = new System.Drawing.Point(3, 43);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(208, 28);
+            this.label69.TabIndex = 2;
+            this.label69.Text = "Набор должностей";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label70.Location = new System.Drawing.Point(266, 4);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(405, 28);
+            this.label70.TabIndex = 1;
+            this.label70.Text = "ЗАО Якубенко Пакостин Карпорэйтед";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label71.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label71.Location = new System.Drawing.Point(3, 4);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(218, 28);
+            this.label71.TabIndex = 0;
+            this.label71.Text = "Название компании";
             // 
             // StudentDisplay
             // 
@@ -900,7 +1056,6 @@
             this.panel4.Controls.Add(this.comboBox5);
             this.panel4.Controls.Add(this.comboBox4);
             this.panel4.Controls.Add(this.button7);
-            this.panel4.Controls.Add(this.button6);
             this.panel4.Controls.Add(this.label39);
             this.panel4.Controls.Add(this.label47);
             this.panel4.Location = new System.Drawing.Point(2, 39);
@@ -941,17 +1096,6 @@
             this.button7.Text = "Назначить";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(170, 55);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(110, 35);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "Отмена";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label39
             // 
@@ -1044,6 +1188,106 @@
             this.label42.TabIndex = 0;
             this.label42.Text = "Создание работы";
             // 
+            // PositionCreation
+            // 
+            this.PositionCreation.BackColor = System.Drawing.Color.White;
+            this.PositionCreation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PositionCreation.Controls.Add(this.panel6);
+            this.PositionCreation.Controls.Add(this.label43);
+            this.PositionCreation.Location = new System.Drawing.Point(835, 69);
+            this.PositionCreation.Name = "PositionCreation";
+            this.PositionCreation.Size = new System.Drawing.Size(431, 137);
+            this.PositionCreation.TabIndex = 6;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.textBox8);
+            this.panel6.Controls.Add(this.label44);
+            this.panel6.Controls.Add(this.textBox7);
+            this.panel6.Controls.Add(this.button6);
+            this.panel6.Controls.Add(this.label40);
+            this.panel6.Location = new System.Drawing.Point(2, 39);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(425, 94);
+            this.panel6.TabIndex = 3;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(212, 27);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(203, 20);
+            this.textBox8.TabIndex = 26;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label44.Location = new System.Drawing.Point(208, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(95, 24);
+            this.label44.TabIndex = 25;
+            this.label44.Text = "Зарплата";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(4, 27);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(203, 20);
+            this.textBox7.TabIndex = 24;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(286, 55);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(131, 35);
+            this.button6.TabIndex = 22;
+            this.button6.Text = "Создать";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label40.Location = new System.Drawing.Point(0, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(202, 24);
+            this.label40.TabIndex = 2;
+            this.label40.Text = "Название должности";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label43.Location = new System.Drawing.Point(1, 10);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(229, 26);
+            this.label43.TabIndex = 0;
+            this.label43.Text = "Создание должности";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(266, 43);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(405, 28);
+            this.comboBox6.TabIndex = 2;
+            this.comboBox6.Text = "Все";
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(270, 122);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(203, 37);
+            this.button9.TabIndex = 20;
+            this.button9.Text = "Удалить должность";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1052,6 +1296,7 @@
             this.Controls.Add(this.Navigation);
             this.Controls.Add(this.Settings);
             this.Controls.Add(this.CompanyCreation);
+            this.Controls.Add(this.PositionCreation);
             this.Controls.Add(this.StudentCreation);
             this.Controls.Add(this.StudentSelectJob);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1069,6 +1314,10 @@
             this.SettingsNavigation.ResumeLayout(false);
             this.SettingsNavigation.PerformLayout();
             this.Settings.ResumeLayout(false);
+            this.CompanyDisplay.ResumeLayout(false);
+            this.CompanyDisplay.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.StudentDisplay.ResumeLayout(false);
             this.StudentDisplay.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1085,6 +1334,10 @@
             this.CompanyCreation.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.PositionCreation.ResumeLayout(false);
+            this.PositionCreation.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1160,7 +1413,6 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox5;
@@ -1170,6 +1422,27 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Panel PositionCreation;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Panel CompanyDisplay;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.Button button9;
     }
 }
 

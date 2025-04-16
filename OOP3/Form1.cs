@@ -28,9 +28,11 @@ namespace OOP3
             InitializeComponent();
             Console.WriteLine("Форма №1 запущена");
             StudentCreation.Visible = false;
+            CompanyDisplay.Visible = false;
             StudentSettingsNavigation.Visible = false;
             StudentSelectJob.Visible = false;
             CompanySettingsNavigation.Visible = false;
+            PositionCreation.Visible = false;
             List<string> Blank = new List<string>
             {
                 "Не выбрано",
@@ -79,8 +81,12 @@ namespace OOP3
                 CompanySettingsNavigation.Visible = true;
                 List<string> Blank = new List<string>
                 {
-                    "Все"
+                    "Не выбрана"
                 };
+                foreach (Work work in _works)
+                {
+                    Blank.Add(work.Company);
+                }
                 InitializeComboBox(comboBox3, Blank);
             }
             else
@@ -127,12 +133,24 @@ namespace OOP3
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             string text = comboBox3.Text;
-            if (text == "Все")
+            if (text == "Не выбрана")
             {
+                PositionCreation.Visible = false;
+                CompanyDisplay.Visible = false;
                 CompanyCreation.Visible = true;
             } else
             {
+                PositionCreation.Visible = false;
+                CompanyDisplay.Visible = false;
                 CompanyCreation.Visible = false;
+                foreach (Work work in _works)
+                {
+                    if (comboBox3.Text == work.Company)
+                    {
+                        PositionCreation.Visible = true;
+                        CompanyDisplay.Visible = true;
+                    }
+                }
             }
         }
         /*StudentCreationSubmit*/
@@ -196,7 +214,8 @@ namespace OOP3
         }
         private void CloseSettingsNavigation()
         {
-
+            CompanyDisplay.Visible = false;
+            PositionCreation.Visible = false;
             CompanyCreation.Visible = false;
             StudentSelectJob.Visible = false;
             StudentDisplay.Visible = false;
@@ -336,10 +355,6 @@ namespace OOP3
             comboBox2.Text = "Все";
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -373,11 +388,88 @@ namespace OOP3
         */
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Работа успешно создана");
             string text = textBox6.Text;
-            Work work = new Work(text);
-            ClearCompanyCreation();
-            _works.Add(work);
+            Work work = null;
+            try
+            {
+                work = new Work(text);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
+            }
+            if (work != null)
+            {
+                MessageBox.Show("Работа успешно создана");
+                ClearCompanyCreation();
+                _works.Add(work);
+                List<string> Blank = new List<string>
+                {
+                    "Не выбрана"
+                };
+                foreach (Work work1 in _works)
+                {
+                    Blank.Add(work1.Company);
+                }
+                InitializeComboBox(comboBox4, Blank);
+                InitializeComboBox(comboBox3, Blank);
+                comboBox3.Text = work.Company;
+            }
+            else
+            {
+                MessageBox.Show("Работа не создана");
+            }
+        }
+
+        /*
+        StudentSelectWork 
+        */
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Work tempWork = null;
+            foreach (Work work in _works)
+            {
+                if (comboBox4.Text == work.Company)
+                {
+                    tempWork = work;
+                }
+            }
+            if (tempWork != null)
+            {
+                List<string> Blank = new List<string>();
+                foreach (Position position in tempWork._positions)
+                {
+                    Blank.Add(position.Name);
+                }
+                InitializeComboBox(comboBox5, Blank);
+            } else
+            {
+                List<string> Blank = new List<string>
+                {
+                    "Безработный"
+                };
+                InitializeComboBox(comboBox5, Blank);
+            }
+        }
+        /*
+         PositionCreationSubmit
+        */
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string name = textBox7.Text;
+            string sellary = textBox8.Text;
+            Work tempWork = null;
+            foreach (Work work in _works)
+            {
+                if (comboBox3.Text == work.Company)
+                {
+                    tempWork = work;
+                }
+            }
+            Position newPosition = new Position(name, sellary);
+            _works.Remove(tempWork);
+            tempWork._positions.Add(newPosition);
+            _works.Add(tempWork);
             List<string> Blank = new List<string>
             {
                 "Не выбрана"
@@ -387,15 +479,8 @@ namespace OOP3
                 Blank.Add(work1.Company);
             }
             InitializeComboBox(comboBox4, Blank);
-            comboBox2.Text = work.Company;
-        }
-
-        /*
-        StudentSelectWork 
-        */
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            InitializeComboBox(comboBox3, Blank);
+            comboBox3.Text = tempWork.Company;
         }
     }
 }
