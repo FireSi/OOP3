@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.IO;
 using System.Globalization;
+using System.Runtime.Remoting.Messaging;
 
 namespace OOP3
 {
@@ -347,8 +348,6 @@ namespace OOP3
 
         private void StudentSelectJobClear()
         {
-            comboBox4.Text = "Не выбрана";
-            comboBox5.Text = "Безработный";
             List<string> Blank = new List<string>
             {
                 "Не выбрана"
@@ -367,6 +366,36 @@ namespace OOP3
         private void ClearCompanyCreation()
         {
             textBox6.Text = string.Empty;
+            textBox6.BackColor = Color.White;
+        }
+        /*
+        CompanyCreationSubmit
+        */
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Работа успешно создана");
+            string text = textBox6.Text;
+            Work work = new Work(text);
+            ClearCompanyCreation();
+            _works.Add(work);
+            List<string> Blank = new List<string>
+            {
+                "Не выбрана"
+            };
+            foreach (Work work1 in _works)
+            {
+                Blank.Add(work1.Company);
+            }
+            InitializeComboBox(comboBox4, Blank);
+            comboBox2.Text = work.Company;
+        }
+
+        /*
+        StudentSelectWork 
+        */
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

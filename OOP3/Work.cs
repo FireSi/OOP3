@@ -34,5 +34,11 @@ namespace OOP3
             this._positions.Add(Workless);
             this.Company = company;
         }
+        public Work(string company, List<Position> positions)
+        {
+            Position Workless = new Position("Безработный", 0);
+            this._positions.Add(Workless);
+            this.Company = company;
+        }
     }
 }
