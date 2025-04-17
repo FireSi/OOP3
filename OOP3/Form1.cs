@@ -149,6 +149,14 @@ namespace OOP3
                     {
                         PositionCreation.Visible = true;
                         CompanyDisplay.Visible = true;
+                        label70.Text = work.Company;
+                        List<string> Blank = new List<string>();
+                        foreach (Position position in work._positions)
+                        {
+                            Blank.Add(position.Name);
+                        }
+                        InitializeComboBox(comboBox6, Blank);
+                        comboBox6.Text = "Безработный";
                     }
                 }
             }
@@ -355,10 +363,56 @@ namespace OOP3
             comboBox2.Text = "Все";
         }
 
-
+        /*
+        StudentCompanySet 
+        */
         private void button7_Click(object sender, EventArgs e)
         {
-
+            if (comboBox4.Text == "Не выбрана")
+            {
+                MessageBox.Show("Выберите профессию");
+                label36.Text = "Не выбрана";
+                label35.Text = "Безработный";
+                label37.Text = "0";
+            }
+            else
+            {
+                Work tempWork = null;
+                Position tempPos = null;
+                foreach (Work work in _works)
+                {
+                    if (work.Company == comboBox4.Text)
+                    {
+                        tempWork = work;
+                    }
+                }
+                if (tempWork != null)
+                {
+                    if (comboBox5.Text == "Безработный")
+                    {
+                        MessageBox.Show("Выберите должность");
+                        label36.Text = tempWork.Company;
+                        label35.Text = "Безработный";
+                        label37.Text = "0";
+                    } 
+                    else
+                    {
+                        foreach (Position position in tempWork._positions)
+                        {
+                            if (comboBox5.Text == position.Name)
+                            {
+                                tempPos = position;
+                            }
+                        }
+                        if (tempPos != null)
+                        {
+                            label36.Text = tempWork.Company;
+                            label35.Text = tempPos.Name;
+                            label37.Text = tempPos.Sellary;
+                        }
+                    }
+                }
+            }
         }
 
         private void StudentSelectJobClear()
@@ -458,6 +512,8 @@ namespace OOP3
         {
             string name = textBox7.Text;
             string sellary = textBox8.Text;
+            textBox7.Text = string.Empty;
+            textBox8.Text = string.Empty;
             Work tempWork = null;
             foreach (Work work in _works)
             {
@@ -481,6 +537,99 @@ namespace OOP3
             InitializeComboBox(comboBox4, Blank);
             InitializeComboBox(comboBox3, Blank);
             comboBox3.Text = tempWork.Company;
+        }
+        /*
+        PositionSelection 
+        */
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Work work in _works)
+            {
+                if (comboBox3.Text == work.Company)
+                {
+                    foreach (Position position in work._positions)
+                    {
+                        if (comboBox6.Text == position.Name)
+                        {
+                            label46.Text = position.Name;
+                            label49.Text = position.Sellary;
+                        }
+                    }
+                }
+            }
+        }
+        /*
+        PositionDelete 
+        */
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Work tempWork = null;
+            Position tempPos = null;
+            foreach (Work work in _works) {
+                if (work.Company == comboBox3.Text)
+                {
+                    tempWork = work;
+                    foreach (Position position in work._positions)
+                    {
+                        if (position.Name == comboBox6.Text)
+                        {
+                            tempPos = position;
+                        }
+                    }
+                }
+            }
+            if (tempWork != null)
+            {
+                if (tempPos != null)
+                {
+                    if (tempPos.Name != "Безработный")
+                    {
+                        _works.Remove(tempWork);
+                        tempWork._positions.Remove(tempPos);
+                        _works.Add(tempWork);
+                        List<string> Blank = new List<string>
+                        {
+                            "Не выбрана"
+                        };
+                        foreach (Work work1 in _works)
+                        {
+                            Blank.Add(work1.Company);
+                        }
+                        InitializeComboBox(comboBox4, Blank);
+                        InitializeComboBox(comboBox3, Blank);
+                        comboBox3.Text = tempWork.Company;
+                    }
+                }
+            }
+        }
+        /*
+        CompanyDelete 
+        */
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Work tempWork = null;
+            foreach (Work work in _works)
+            {
+                if (work.Company == comboBox3.Text)
+                {
+                    tempWork = work;
+                }
+            }
+            if (tempWork != null)
+            {
+                _works.Remove(tempWork);
+                List<string> Blank = new List<string>
+                {
+                    "Не выбрана"
+                };
+                foreach (Work work1 in _works)
+                {
+                    Blank.Add(work1.Company);
+                }
+                InitializeComboBox(comboBox4, Blank);
+                InitializeComboBox(comboBox3, Blank);
+                comboBox3.Text = "Не выбрана";
+            }
         }
     }
 }

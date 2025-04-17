@@ -59,7 +59,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.Panel();
             this.CompanyDisplay = new System.Windows.Forms.Panel();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
@@ -125,8 +127,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label40 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.StudentCreation.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -422,6 +423,7 @@
             // 
             this.Navigation.BackColor = System.Drawing.Color.White;
             this.Navigation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Navigation.Controls.Add(this.button10);
             this.Navigation.Controls.Add(this.button4);
             this.Navigation.Controls.Add(this.button3);
             this.Navigation.Location = new System.Drawing.Point(0, 0);
@@ -432,7 +434,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(177, -1);
+            this.button4.Location = new System.Drawing.Point(176, -1);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(179, 63);
             this.button4.TabIndex = 3;
@@ -490,8 +492,8 @@
             // 
             this.Settings.BackColor = System.Drawing.Color.White;
             this.Settings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Settings.Controls.Add(this.CompanyDisplay);
             this.Settings.Controls.Add(this.StudentDisplay);
+            this.Settings.Controls.Add(this.CompanyDisplay);
             this.Settings.Controls.Add(this.CompanySettingsNavigation);
             this.Settings.Controls.Add(this.StudentSettingsNavigation);
             this.Settings.Controls.Add(this.SettingsNavigation);
@@ -514,6 +516,17 @@
             this.CompanyDisplay.Size = new System.Drawing.Size(821, 251);
             this.CompanyDisplay.TabIndex = 20;
             // 
+            // comboBox6
+            // 
+            this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(266, 43);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(405, 28);
+            this.comboBox6.TabIndex = 2;
+            this.comboBox6.Text = "Все";
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
+            // 
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -527,6 +540,17 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(478, 165);
             this.panel7.TabIndex = 19;
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(270, 122);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(203, 37);
+            this.button9.TabIndex = 20;
+            this.button9.Text = "Удалить должность";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label46
             // 
@@ -595,6 +619,7 @@
             this.button8.TabIndex = 18;
             this.button8.Text = "Удалить компанию";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label69
             // 
@@ -681,9 +706,9 @@
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label37.Location = new System.Drawing.Point(254, 96);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(104, 28);
+            this.label37.Size = new System.Drawing.Size(26, 28);
             this.label37.TabIndex = 24;
-            this.label37.Text = "00000.00";
+            this.label37.Text = "0";
             // 
             // label36
             // 
@@ -1268,25 +1293,16 @@
             this.label43.TabIndex = 0;
             this.label43.Text = "Создание должности";
             // 
-            // comboBox6
+            // button10
             // 
-            this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(266, 43);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(405, 28);
-            this.comboBox6.TabIndex = 2;
-            this.comboBox6.Text = "Все";
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(270, 122);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(203, 37);
-            this.button9.TabIndex = 20;
-            this.button9.Text = "Удалить должность";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(353, -1);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(179, 63);
+            this.button10.TabIndex = 4;
+            this.button10.TabStop = false;
+            this.button10.Text = "Сохранить";
+            this.button10.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1295,8 +1311,8 @@
             this.ClientSize = new System.Drawing.Size(1278, 691);
             this.Controls.Add(this.Navigation);
             this.Controls.Add(this.Settings);
-            this.Controls.Add(this.CompanyCreation);
             this.Controls.Add(this.PositionCreation);
+            this.Controls.Add(this.CompanyCreation);
             this.Controls.Add(this.StudentCreation);
             this.Controls.Add(this.StudentSelectJob);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1443,6 +1459,7 @@
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
 
