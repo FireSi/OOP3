@@ -1,0 +1,58 @@
+[
+  {
+    "name": "\u041B\u0443\u0446\u0435\u0432\u0438\u0447 \u041F\u0430\u0432\u0435\u043B \u0410\u043B\u0435\u043A\u0441\u0435\u0435\u0432\u0438\u0447",
+    "profession": "\u041F\u0430",
+    "homeAddress": "\u041F\u0430, \u0443\u043B. \u041F\u0430, 7",
+    "avgMark": "8",
+    "university": "\u041F\u0410\u041F\u0410",
+    "birthdate": "2009-04-17T00:00:00",
+    "course": 1,
+    "group": 1,
+    "gender": "\u041C\u0443\u0436\u0441\u043A\u043E\u0439",
+    "company": {
+      "company": "\u041E\u0410\u041E",
+      "positions": [
+        {
+          "name": "asd",
+          "sellary": "2124"
+        },
+        {
+          "name": "sad",
+          "sellary": "231"
+        }
+      ]
+    },
+    "position": {
+      "name": "asd",
+      "sellary": "2124"
+    }
+  },
+  {
+    "name": "\u041B\u0443\u0446\u0435\u0432\u0438\u0447 \u041C. \u0410.",
+    "profession": "\u0410\u043F",
+    "homeAddress": "\u0410\u043F, \u0443\u043B. \u0410\u043F, 8",
+    "avgMark": "7",
+    "university": "\u0410\u041F\u0410\u041F",
+    "birthdate": "2009-04-17T00:00:00",
+    "course": 1,
+    "group": 1,
+    "gender": "\u0416\u0435\u043D\u0441\u043A\u0438\u0439",
+    "company": {
+      "company": "\u041E\u0410\u041E",
+      "positions": [
+        {
+          "name": "asd",
+          "sellary": "2124"
+        },
+        {
+          "name": "sad",
+          "sellary": "231"
+        }
+      ]
+    },
+    "position": {
+      "name": "sad",
+      "sellary": "231"
+    }
+  }
+]

@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace OOP3
 {
-    internal class Work
+    public class Work
     {
         /*
         
@@ -31,6 +31,11 @@ namespace OOP3
                 _company = _company.Trim();
             }
         }
+        public List<Position> Positions
+        {
+            get { return _positions; }
+            set { _positions = value; }
+        }
         /*
         Конструктор без должностей 
         */
@@ -45,5 +50,7 @@ namespace OOP3
             this._positions.Add(Workless);
             this.Company = company;
         }
+
+        public Work() { }
     }
 }

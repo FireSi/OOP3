@@ -23,6 +23,8 @@ namespace OOP3
         private DateTime _birthdate;
         private int _course;
         private int _group;
+        public Work _company = new Work("Не выбрана");
+        public Position _position = new Position("Безработный", "0");
         /*
          
         СВОЙСТВА
@@ -89,6 +91,21 @@ namespace OOP3
             get { return _group; }
             set { _group = value; }
         }
+        public string Gender
+        {
+            get { return _gender; }
+            set { _gender = value; }
+        }
+        public Work Company
+        {
+            get { return _company; }
+            set { _company = value; }
+        }
+        public Position Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
 
         /*
          
@@ -132,13 +149,15 @@ namespace OOP3
             this.Name = name;
             this.Profession = profession;
             this.HomeAddress = homeAdress;
-            this._gender = gender;
+            this.Gender = gender;
             this.AvgMark = avgMark;
             this.University = university;
             this.Birthdate = birthdate;
             this.Course = course;
             this.Group = group;
         }
+
+        public Student() { }
         /*
          
         ВАЛИДАЦИЯ

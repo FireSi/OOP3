@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OOP3
 {
-    internal class Position
+    public class Position
     {
         /*
          
@@ -86,5 +86,7 @@ namespace OOP3
             this.Name = name;
             this.Sellary = sellary;
         }
+
+        public Position() { }
     }
 }

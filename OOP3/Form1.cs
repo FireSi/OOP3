@@ -13,6 +13,10 @@ using System.Threading;
 using System.IO;
 using System.Globalization;
 using System.Runtime.Remoting.Messaging;
+using System.Text.RegularExpressions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 
 namespace OOP3
 {
@@ -26,11 +30,13 @@ namespace OOP3
         public Form1()
         {
             InitializeComponent();
+            LoadDataFromJson();
             Console.WriteLine("Форма №1 запущена");
             StudentCreation.Visible = false;
             CompanyDisplay.Visible = false;
             StudentSettingsNavigation.Visible = false;
             StudentSelectJob.Visible = false;
+            SearchPanel.Visible = false;
             CompanySettingsNavigation.Visible = false;
             PositionCreation.Visible = false;
             List<string> Blank = new List<string>
@@ -41,10 +47,11 @@ namespace OOP3
             };
             InitializeComboBox(comboBox1, Blank);
         }
-        /*Navigation*/
+        /*Settings*/
         private void button3_Click(object sender, EventArgs e)
         {
-
+            CloseSearch();
+            SettingsNavigation.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -337,6 +344,9 @@ namespace OOP3
             label29.Text = student.Course.ToString();
             label28.Text = student.Group.ToString();
             label27.Text = student.AvgMark;
+            label36.Text = student._company.Company;
+            label35.Text = student._position.Name;
+            label37.Text = student._position.Sellary;
         }
         /*StudentDelete*/
         private void button5_Click(object sender, EventArgs e)
@@ -374,6 +384,30 @@ namespace OOP3
                 label36.Text = "Не выбрана";
                 label35.Text = "Безработный";
                 label37.Text = "0";
+                Student tempStudent = null;
+                foreach (Student student in _students)
+                {
+                    if (comboBox2.Text == student.Name)
+                    {
+                        tempStudent = student;
+                    }
+                }
+                if (tempStudent != null)
+                {
+                    _students.Remove(tempStudent);
+                    tempStudent._company = new Work("Не выбрана");
+                    tempStudent._position = new Position("Безработный", "0");
+                    _students.Add(tempStudent);
+                    List<string> Blank = new List<string>
+                                {
+                                    "Все"
+                                };
+                    foreach (Student student in _students)
+                    {
+                        Blank.Add(student.Name);
+                    }
+                    InitializeComboBox(comboBox2, Blank);
+                }
             }
             else
             {
@@ -394,6 +428,30 @@ namespace OOP3
                         label36.Text = tempWork.Company;
                         label35.Text = "Безработный";
                         label37.Text = "0";
+                        Student tempStudent = null;
+                        foreach (Student student in _students)
+                        {
+                            if (comboBox2.Text == student.Name)
+                            {
+                                tempStudent = student;
+                            }
+                        }
+                        if (tempStudent != null)
+                        {
+                            _students.Remove(tempStudent);
+                            tempStudent._company = tempWork;
+                            tempStudent._position = new Position("Безработный","0");
+                            _students.Add(tempStudent);
+                            List<string> Blank = new List<string>
+                                {
+                                    "Все"
+                                };
+                            foreach (Student student in _students)
+                            {
+                                Blank.Add(student.Name);
+                            }
+                            InitializeComboBox(comboBox2, Blank);
+                        }
                     } 
                     else
                     {
@@ -409,6 +467,30 @@ namespace OOP3
                             label36.Text = tempWork.Company;
                             label35.Text = tempPos.Name;
                             label37.Text = tempPos.Sellary;
+                            Student tempStudent = null;
+                            foreach (Student student in _students)
+                            {
+                                if (comboBox2.Text == student.Name)
+                                {
+                                    tempStudent = student;
+                                }
+                            }
+                            if (tempStudent != null)
+                            {
+                                _students.Remove(tempStudent);
+                                tempStudent._company = tempWork;
+                                tempStudent._position = tempPos;
+                                _students.Add(tempStudent);
+                                List<string> Blank = new List<string>
+                                {
+                                    "Все"
+                                };
+                                foreach (Student student in _students)
+                                {
+                                    Blank.Add(student.Name);
+                                }
+                                InitializeComboBox(comboBox2, Blank);
+                            }
                         }
                     }
                 }
@@ -598,6 +680,7 @@ namespace OOP3
                         InitializeComboBox(comboBox4, Blank);
                         InitializeComboBox(comboBox3, Blank);
                         comboBox3.Text = tempWork.Company;
+
                     }
                 }
             }
@@ -630,6 +713,170 @@ namespace OOP3
                 InitializeComboBox(comboBox3, Blank);
                 comboBox3.Text = "Не выбрана";
             }
+        }
+        public void CloseCreation()
+        {
+            StudentDisplay.Visible = false;
+            SettingsNavigation.Visible = false;
+            StudentSettingsNavigation.Visible = false;
+            CompanyDisplay.Visible = false;
+            CompanySettingsNavigation.Visible = false;
+            StudentCreation.Visible = false;
+            CompanyCreation.Visible = false;
+            StudentSelectJob.Visible = false;
+            PositionCreation.Visible = false;
+        }
+
+        public void CloseSearch()
+        {
+            SearchPanel.Visible = false;
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            CloseCreation();
+            SearchPanel.Visible = true;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string nameInput = Regex.Replace(textBox9.Text ?? "", @"[^\w\sа-яА-ЯёЁ\-]", "").Trim(); // Оставляем буквы, дефисы и пробелы
+
+            string salaryMinRaw = Regex.Replace(textBox10.Text ?? "", @"[^0-9,\.]", "").Trim();
+            string salaryMaxRaw = Regex.Replace(textBox11.Text ?? "", @"[^0-9,\.]", "").Trim();
+
+            // Удалим лишние точки и запятые: только одну оставим
+            salaryMinRaw = Regex.Replace(salaryMinRaw, @"[.,](?=[^.,]*[.,])", "");
+            salaryMaxRaw = Regex.Replace(salaryMaxRaw, @"[.,](?=[^.,]*[.,])", "");
+
+            // Проверка на пустоту
+            if (string.IsNullOrWhiteSpace(nameInput) && string.IsNullOrWhiteSpace(salaryMinRaw) && string.IsNullOrWhiteSpace(salaryMaxRaw))
+            {
+                MessageBox.Show("Поиск по пустым полям невозможен!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            textBox12.Clear(); // Очистим вывод
+
+            // Сначала ищем по имени
+            if (!string.IsNullOrWhiteSpace(nameInput))
+            {
+                var studentsFound = SearchService.SearchByNameRegex(_students, nameInput);
+                textBox12.AppendText("Найденные студенты:\r\n");
+
+                foreach (var student in studentsFound)
+                {
+                    textBox12.AppendText($"Имя: {student.Name}, Университет: {student.University}, Курс: {student.Course}\r\n");
+                }
+
+                textBox12.AppendText("\r\n");
+            }
+
+            // Потом ищем по зарплате
+            if (!string.IsNullOrWhiteSpace(salaryMinRaw) && !string.IsNullOrWhiteSpace(salaryMaxRaw))
+            {
+                if (float.TryParse(salaryMinRaw.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out float min) &&
+                    float.TryParse(salaryMaxRaw.Replace(',', '.'), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out float max))
+                {
+                    var positionsFound = SearchService.SearchPositionBySellaryRange(_works, min, max);
+                    textBox12.AppendText("Найденные должности:\r\n");
+
+                    foreach (var pos in positionsFound)
+                    {
+                        textBox12.AppendText($"Должность: {pos.Name}, Зарплата: {pos.Sellary}\r\n");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка в формате чисел зарплаты.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            textBox12.Clear();
+
+            var sortedStudents = SortService.SortByNameThenMark(_students);
+
+            textBox12.AppendText("Студенты (сортировка по имени и среднему баллу):\r\n\r\n");
+
+            foreach (var student in sortedStudents)
+            {
+                textBox12.AppendText(
+                    $"Имя: {student.Name}, Средний балл: {student.AvgMark}, Курс: {student.Course}, Группа: {student.Group}\r\n"
+                );
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            textBox12.Clear();
+
+            var sortedPositions = SortService.SortBySellary(_works);
+
+            textBox12.AppendText("Должности (сортировка по зарплате):\r\n\r\n");
+
+            foreach (var position in sortedPositions)
+            {
+                textBox12.AppendText(
+                    $"Название: {position.Name}, Зарплата: {position.Sellary}\r\n"
+                );
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase, // можно убрать, если хочешь сохранить точные имена
+                PropertyNameCaseInsensitive = true
+            };
+
+            try
+            {
+                // Сохраняем студентов
+                string studentsJson = JsonSerializer.Serialize(_students, options);
+                File.WriteAllText("students.json", studentsJson);
+
+                // Сохраняем работы
+                string worksJson = JsonSerializer.Serialize(_works, options);
+                File.WriteAllText("works.json", worksJson);
+
+                MessageBox.Show("Данные успешно сохранены в JSON.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при сохранении данных: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadDataFromJson()
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // чтобы не было проблем с регистром
+            };
+
+            if (File.Exists("students.json"))
+            {
+                string studentsJson = File.ReadAllText("students.json");
+                _students = JsonSerializer.Deserialize<List<Student>>(studentsJson, options) ?? new List<Student>();
+            }
+
+            if (File.Exists("works.json"))
+            {
+                string worksJson = File.ReadAllText("works.json");
+                _works = JsonSerializer.Deserialize<List<Work>>(worksJson, options) ?? new List<Work>();
+            }
+
+            MessageBox.Show("Данные успешно загружены из JSON.", "Загрузка завершена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Программа: Рассчет капитала\nРазработал: Луцевич Павел Алексеевич\nВерсия: 0,1,15");
         }
     }
 }
